@@ -1,0 +1,16 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environments
+venv/
+env/
+
+# Environment variables (secrets)
+.env
+
+# FastF1 Cache
+cache/
+
+# VS Code editor files
+.vscode/.vscode/

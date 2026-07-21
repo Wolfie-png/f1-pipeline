@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  database:
+    image: postgres:15
+    container_name: f1db
+    environment:
+      POSTGRES_USER: wolfie
+      POSTGRES_PASSWORD: secret_password_here
+      POSTGRES_DB: f1_data
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  pipeline:
+    build: .
+    container_name: f1pipeline
+    depends_on:
+      - database
+    environment:
+      DB_HOST: database
+      DB_USER: wolfie
+      DB_PASSWORD: secret_password_here
+      DB_NAME: f1_data
+
+volumes:
+  postgres_data:

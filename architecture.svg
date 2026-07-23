@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" width="900" height="420" font-family="'Segoe UI', Arial, sans-serif">
+
+  <!-- Background -->
+  <rect width="900" height="420" fill="#0d1117" rx="12"/>
+
+  <!-- Title -->
+  <text x="450" y="38" text-anchor="middle" fill="#e6edf3" font-size="16" font-weight="600" letter-spacing="1">F1 TELEMETRY DATA PIPELINE — ARCHITECTURE</text>
+  <line x1="60" y1="52" x2="840" y2="52" stroke="#30363d" stroke-width="1"/>
+
+  <!-- ── Layer labels ── -->
+  <text x="100" y="90" text-anchor="middle" fill="#8b949e" font-size="10" letter-spacing="1.5">EXTRACT</text>
+  <text x="270" y="90" text-anchor="middle" fill="#8b949e" font-size="10" letter-spacing="1.5">TRANSFORM</text>
+  <text x="450" y="90" text-anchor="middle" fill="#8b949e" font-size="10" letter-spacing="1.5">LOAD</text>
+  <text x="630" y="90" text-anchor="middle" fill="#8b949e" font-size="10" letter-spacing="1.5">STORE</text>
+  <text x="800" y="90" text-anchor="middle" fill="#8b949e" font-size="10" letter-spacing="1.5">SERVE</text>
+
+  <!-- ── Connector arrows ── -->
+  <!-- Extract → Transform -->
+  <line x1="158" y1="210" x2="198" y2="210" stroke="#30363d" stroke-width="2"/>
+  <polygon points="198,205 208,210 198,215" fill="#30363d"/>
+  <!-- Transform → Load -->
+  <line x1="338" y1="210" x2="378" y2="210" stroke="#30363d" stroke-width="2"/>
+  <polygon points="378,205 388,210 378,215" fill="#30363d"/>
+  <!-- Load → Store -->
+  <line x1="518" y1="210" x2="558" y2="210" stroke="#30363d" stroke-width="2"/>
+  <polygon points="558,205 568,210 558,215" fill="#30363d"/>
+  <!-- Store → Serve -->
+  <line x1="698" y1="210" x2="738" y2="210" stroke="#30363d" stroke-width="2"/>
+  <polygon points="738,205 748,210 738,215" fill="#30363d"/>
+
+  <!-- ── Box 1: FastF1 (Extractor) ── -->
+  <rect x="40" y="155" width="120" height="110" rx="8" fill="#161b22" stroke="#1f6feb" stroke-width="1.5"/>
+  <rect x="40" y="155" width="120" height="28" rx="8" fill="#1f6feb" opacity="0.15"/>
+  <rect x="40" y="175" width="120" height="8" rx="0" fill="#1f6feb" opacity="0.15"/>
+  <text x="100" y="174" text-anchor="middle" fill="#58a6ff" font-size="11" font-weight="600">FastF1</text>
+  <text x="100" y="200" text-anchor="middle" fill="#8b949e" font-size="10">extract.py</text>
+  <line x1="55" y1="210" x2="145" y2="210" stroke="#30363d" stroke-width="0.5"/>
+  <text x="100" y="226" text-anchor="middle" fill="#6e7681" font-size="9">Race sessions</text>
+  <text x="100" y="240" text-anchor="middle" fill="#6e7681" font-size="9">Lap data</text>
+  <text x="100" y="254" text-anchor="middle" fill="#6e7681" font-size="9">Telemetry</text>
+
+  <!-- ── Box 2: Transformer ── -->
+  <rect x="210" y="155" width="130" height="110" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+  <rect x="210" y="155" width="130" height="28" rx="8" fill="#3fb950" opacity="0.12"/>
+  <rect x="210" y="175" width="130" height="8" rx="0" fill="#3fb950" opacity="0.12"/>
+  <text x="275" y="174" text-anchor="middle" fill="#3fb950" font-size="11" font-weight="600">Transformer</text>
+  <text x="275" y="200" text-anchor="middle" fill="#8b949e" font-size="10">transform.py</text>
+  <line x1="225" y1="210" x2="325" y2="210" stroke="#30363d" stroke-width="0.5"/>
+  <text x="275" y="226" text-anchor="middle" fill="#6e7681" font-size="9">Remove nulls</text>
+  <text x="275" y="240" text-anchor="middle" fill="#6e7681" font-size="9">Filter outliers</text>
+  <text x="275" y="254" text-anchor="middle" fill="#6e7681" font-size="9">Type casting</text>
+
+  <!-- ── Box 3: Loader ── -->
+  <rect x="390" y="155" width="120" height="110" rx="8" fill="#161b22" stroke="#d29922" stroke-width="1.5"/>
+  <rect x="390" y="155" width="120" height="28" rx="8" fill="#d29922" opacity="0.12"/>
+  <rect x="390" y="175" width="120" height="8" rx="0" fill="#d29922" opacity="0.12"/>
+  <text x="450" y="174" text-anchor="middle" fill="#d29922" font-size="11" font-weight="600">Loader</text>
+  <text x="450" y="200" text-anchor="middle" fill="#8b949e" font-size="10">load.py</text>
+  <line x1="405" y1="210" x2="495" y2="210" stroke="#30363d" stroke-width="0.5"/>
+  <text x="450" y="226" text-anchor="middle" fill="#6e7681" font-size="9">SQLAlchemy</text>
+  <text x="450" y="240" text-anchor="middle" fill="#6e7681" font-size="9">DataFrame</text>
+  <text x="450" y="254" text-anchor="middle" fill="#6e7681" font-size="9">→ SQL table</text>
+
+  <!-- ── Box 4: PostgreSQL ── -->
+  <rect x="568" y="155" width="124" height="110" rx="8" fill="#161b22" stroke="#a371f7" stroke-width="1.5"/>
+  <rect x="568" y="155" width="124" height="28" rx="8" fill="#a371f7" opacity="0.12"/>
+  <rect x="568" y="175" width="124" height="8" rx="0" fill="#a371f7" opacity="0.12"/>
+  <text x="630" y="174" text-anchor="middle" fill="#a371f7" font-size="11" font-weight="600">PostgreSQL</text>
+  <text x="630" y="200" text-anchor="middle" fill="#8b949e" font-size="10">f1data database</text>
+  <line x1="583" y1="210" x2="677" y2="210" stroke="#30363d" stroke-width="0.5"/>
+  <text x="630" y="226" text-anchor="middle" fill="#6e7681" font-size="9">laps table</text>
+  <text x="630" y="240" text-anchor="middle" fill="#6e7681" font-size="9">Indexed queries</text>
+  <text x="630" y="254" text-anchor="middle" fill="#6e7681" font-size="9">Docker volume</text>
+
+  <!-- ── Box 5: FastAPI ── -->
+  <rect x="748" y="155" width="112" height="110" rx="8" fill="#161b22" stroke="#f78166" stroke-width="1.5"/>
+  <rect x="748" y="155" width="112" height="28" rx="8" fill="#f78166" opacity="0.12"/>
+  <rect x="748" y="175" width="112" height="8" rx="0" fill="#f78166" opacity="0.12"/>
+  <text x="804" y="174" text-anchor="middle" fill="#f78166" font-size="11" font-weight="600">FastAPI</text>
+  <text x="804" y="200" text-anchor="middle" fill="#8b949e" font-size="10">api/main.py</text>
+  <line x1="763" y1="210" x2="845" y2="210" stroke="#30363d" stroke-width="0.5"/>
+  <text x="804" y="226" text-anchor="middle" fill="#6e7681" font-size="9">REST endpoints</text>
+  <text x="804" y="240" text-anchor="middle" fill="#6e7681" font-size="9">JSON responses</text>
+  <text x="804" y="254" text-anchor="middle" fill="#6e7681" font-size="9">:8000/docs</text>
+
+  <!-- ── Bottom row: supporting tech ── -->
+  <line x1="60" y1="310" x2="840" y2="310" stroke="#30363d" stroke-width="0.5"/>
+  <text x="450" y="332" text-anchor="middle" fill="#8b949e" font-size="10" letter-spacing="1.5">INFRASTRUCTURE</text>
+
+  <!-- Docker Compose pill -->
+  <rect x="60" y="345" width="150" height="36" rx="18" fill="#161b22" stroke="#1f6feb" stroke-width="1"/>
+  <text x="135" y="367" text-anchor="middle" fill="#58a6ff" font-size="11">🐳 Docker Compose</text>
+
+  <!-- pytest pill -->
+  <rect x="228" y="345" width="110" height="36" rx="18" fill="#161b22" stroke="#3fb950" stroke-width="1"/>
+  <text x="283" y="367" text-anchor="middle" fill="#3fb950" font-size="11">✅ pytest</text>
+
+  <!-- GitHub Actions pill -->
+  <rect x="356" y="345" width="170" height="36" rx="18" fill="#161b22" stroke="#d29922" stroke-width="1"/>
+  <text x="441" y="367" text-anchor="middle" fill="#d29922" font-size="11">⚙️ GitHub Actions CI</text>
+
+  <!-- Pandas pill -->
+  <rect x="544" y="345" width="100" height="36" rx="18" fill="#161b22" stroke="#a371f7" stroke-width="1"/>
+  <text x="594" y="367" text-anchor="middle" fill="#a371f7" font-size="11">🐼 Pandas</text>
+
+  <!-- Python pill -->
+  <rect x="662" y="345" width="100" height="36" rx="18" fill="#161b22" stroke="#f78166" stroke-width="1"/>
+  <text x="712" y="367" text-anchor="middle" fill="#f78166" font-size="11">🐍 Python</text>
+
+  <!-- main.py label -->
+  <rect x="780" y="345" width="60" height="36" rx="18" fill="#161b22" stroke="#8b949e" stroke-width="1"/>
+  <text x="810" y="367" text-anchor="middle" fill="#8b949e" font-size="11">main.py</text>
+
+</svg>

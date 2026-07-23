@@ -61,6 +61,6 @@ A production-style data engineering pipeline that extracts real Formula 1 sessio
 **Requirements:** Docker and Docker Compose installed
 
 ```bash
-git clone [https://github.com/YOUR_USERNAME/YOUR_REPO.git](https://github.com/YOUR_USERNAME/YOUR_REPO.git)
+git clone https://github.com/Wolfie-png/f1-pipeline
 cd f1-pipeline
 docker compose up --build
